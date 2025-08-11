@@ -2,5 +2,5 @@ projectKey=demoic
 serverUrl=http://localhost:9000
 serverVersion=25.8.0.112029
 dashboardUrl=http://localhost:9000/dashboard?id=demoic
-ceTaskId=cea795a1-4391-412a-ab60-9c39c9c5541d
-ceTaskUrl=http://localhost:9000/api/ce/task?id=cea795a1-4391-412a-ab60-9c39c9c5541d
+ceTaskId=8adc794f-d49b-4baf-ace1-ce246325309f
+ceTaskUrl=http://localhost:9000/api/ce/task?id=8adc794f-d49b-4baf-ace1-ce246325309f

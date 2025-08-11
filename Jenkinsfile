@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        SONAR_TOKEN = credentials('jenkins-token-demoic')
+        SONAR_TOKEN = credentials('jenkins-token-demoic') // Token ao amin'ny Jenkins Credentials
     }
     stages {
         stage('Clone and Clean Repo') {
@@ -18,7 +18,7 @@ pipeline {
                 bat 'mvn test -f DemoIC\\pom.xml'
             }
         }
-        stage('Deploy & SonarQube Analysis') {
+        stage('Build & SonarQube Analysis') {
             steps {
                 bat 'mvn package -f DemoIC\\pom.xml'
                 bat 'mvn deploy -f DemoIC\\pom.xml'
@@ -32,4 +32,3 @@ pipeline {
         }
     }
 }
-
