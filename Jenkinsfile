@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        SONAR_TOKEN = credentials('jenkins-token-demoic') // Token ao amin'ny Jenkins Credentials
+        SONAR_TOKEN = credentials('jenkins-token-demoic') 
     }
     stages {
         stage('Clone and Clean Repo') {
@@ -22,12 +22,10 @@ pipeline {
             steps {
                 bat 'mvn package -f DemoIC\\pom.xml'
                 bat 'mvn deploy -f DemoIC\\pom.xml'
-                bat """
-                    mvn sonar:sonar -f DemoIC\\pom.xml ^
-                    -Dsonar.projectKey=demoic ^
-                    -Dsonar.host.url=http://localhost:9000 ^
-                    -Dsonar.login=%SONAR_TOKEN%
-                """
+                bat 'mvn sonar:sonar -f DemoIC\\pom.xml ^' 
+                bat '-Dsonar.projectKey=demoic ^' 
+                bat '-Dsonar.host.url=http://localhost:9000 ^' 
+                bat '-Dsonar.login=%SONAR_TOKEN%'
             }
         }
     }
