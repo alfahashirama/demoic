@@ -19,14 +19,15 @@ pipeline {
             steps {
                 bat 'mvn package -f DemoIC\\pom.xml'
                 bat 'mvn deploy -f DemoIC\\pom.xml'
-                withCredentials([string(credentialsId: 'jenkins-token-demoic', variable: 'SONAR_TOKEN')]) {
-                    bat """
-                        mvn sonar:sonar -f DemoIC\\pom.xml ^
-                        -Dsonar.projectKey=demoic ^
-                        -Dsonar.host.url=http://localhost:9000 ^
-                        -Dsonar.login=%SONAR_TOKEN%
-                    """
-                }
+               withCredentials([string(credentialsId: 'demoic_token', variable: 'SONAR_TOKEN')]) {
+				    bat """
+				        mvn sonar:sonar -f DemoIC\\pom.xml ^
+				        -Dsonar.projectKey=demoic ^
+				        -Dsonar.host.url=http://localhost:9000 ^
+				        -Dsonar.login=%SONAR_TOKEN%
+				    """
+				}
+
             }
         }
     }
